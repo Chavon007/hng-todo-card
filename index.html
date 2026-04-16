@@ -10,6 +10,7 @@
   <body>
     <main>
       <article class="todo-card" data-testid="test-todo-card" id="todoCard">
+        
         <!-- TITLE + CHECKBOX -->
         <header class="todo-header">
           <h2 class="todo-title" data-testid="test-todo-title" id="todoTitle">
@@ -28,15 +29,26 @@
 
         <!-- DESCRIPTION -->
         <section class="todo-details">
-          <p
-            class="todo-description"
-            data-testid="test-todo-description"
-            id="todoDescription"
+          <button
+            data-testid="test-todo-expand-toggle"
+            id="expandToggle"
+            aria-expanded="false"
+            aria-controls="collapsibleSection"
           >
-            Deep dive into building scalable serverless applications using AWS
-            Lambda, API Gateway, and DynamoDB. Focus on performance
-            optimization, security, and real-world deployment practices.
-          </p>
+            Show more
+          </button>
+
+          <div id="collapsibleSection" class="collapsible-section">
+            <p
+              class="todo-description"
+              data-testid="test-todo-description"
+              id="todoDescription"
+            >
+              Deep dive into building scalable serverless applications using AWS
+              Lambda, API Gateway, and DynamoDB. Focus on performance
+              optimization, security, and real-world deployment practices.
+            </p>
+          </div>
 
           <time
             class="todo-due-date"
@@ -54,6 +66,15 @@
           >
             Calculating...
           </p>
+
+          <span
+            data-testid="test-todo-overdue-indicator"
+            id="overdueIndicator"
+            class="overdue-indicator"
+            hidden
+          >
+            Overdue
+          </span>
         </section>
 
         <!-- PRIORITY + STATUS -->
@@ -67,12 +88,20 @@
           </span>
 
           <span
+            class="todo-priority-indicator"
+            data-testid="test-todo-priority-indicator"
+            id="priorityIndicator"
+          ></span>
+
+          <select
             class="todo-status"
             data-testid="test-todo-status"
             id="todoStatus"
           >
-            In Progress
-          </span>
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Done</option>
+          </select>
         </section>
 
         <!-- TAGS -->
@@ -110,6 +139,70 @@
             Delete
           </button>
         </footer>
+
+        <!-- EDIT FORM -->
+        <section
+          id="editSection"
+          class="edit-section"
+          data-testid="test-edit-section"
+          hidden
+        >
+          <form id="editForm" class="edit-form">
+            
+            <label class="form-group">
+              Title
+              <input
+                id="editTitle"
+                class="form-input"
+                placeholder="Enter Title"
+              />
+            </label>
+
+            <label class="form-group">
+              Description
+              <textarea
+                id="editDescription"
+                class="form-textarea"
+              ></textarea>
+            </label>
+
+            <div class="form-row">
+              <label class="form-group">
+                Priority
+                <select id="editPriority" class="form-select">
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </select>
+              </label>
+
+              <label class="form-group">
+                Due Date
+                <input type="date" id="editDueDate" class="form-input" />
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="button"
+                id="cancelEditBtn"
+                class="cancel-btn"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                id="saveEditBtn"
+                class="save-btn"
+              >
+                Save
+              </button>
+            </div>
+
+          </form>
+        </section>
+
       </article>
     </main>
 
