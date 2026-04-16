@@ -1,10 +1,6 @@
-# Todo Card — Stage 1a
+# Todo Card — stage 1
 
 An interactive Todo Card built with vanilla HTML, CSS, and JavaScript.
-
-## Live URL
-
-[Your live URL here]
 
 ## What Changed from Stage 0
 
