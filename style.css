@@ -160,6 +160,9 @@ main {
   border-radius: 99px;
   align-self: flex-start;
 }
+.overdue-indicator[hidden] {
+  display: none;
+}
 
 /* ── META (PRIORITY + STATUS) ── */
 .todo-meta {
