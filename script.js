@@ -17,6 +17,15 @@ const description = document.getElementById("todoDescription");
 const expandTog = document.getElementById("expandToggle");
 let dueDate = new Date("2026-04-16T18:00:00Z");
 
+const checkLengthOfDescription = () => {
+  const words = description.value.trim().split(/\s+/);
+  if (words.length <= 20) {
+    expandTog.hidden = true;
+  } else {
+    expandTog.hidden = false;
+  }
+};
+
 checkBox.addEventListener("change", () => {
   if (checkBox.checked) {
     title.classList.add("completed");
@@ -58,6 +67,8 @@ saveEdit.addEventListener("click", (e) => {
   dueDate.textContent = dueDateEDit.value;
   dueDate = new Date(dueDateEDit.value);
 
+  checkLengthOfDescription();
+
   editModal.hidden = true;
 });
 
@@ -87,6 +98,7 @@ const updateTime = () => {
 };
 
 updateTime();
+checkLengthOfDescription();
 
 setInterval(updateTime, 6000);
 
